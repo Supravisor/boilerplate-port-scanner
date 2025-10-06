@@ -17,5 +17,8 @@ def get_open_ports(target, port_range, verbose = False):
             else:
                 return 'Error: Invalid IP address'
 
+    first_port = port_range[0]
+    last_port = port_range[1]
+    results = ''
 
     return(open_ports)
