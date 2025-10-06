@@ -21,4 +21,8 @@ def get_open_ports(target, port_range, verbose = False):
     last_port = port_range[1]
     results = ''
 
+    for port in range(first_port, last_port + 1):
+        if not s.connect_ex((ip_address, port)):
+            open_ports.append(port)
+
     return(open_ports)
