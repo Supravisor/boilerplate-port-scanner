@@ -9,7 +9,10 @@ def get_open_ports(target, port_range, verbose = False):
     try:
         ip_address = socket.gethostbyname(target)
     except:
-        pass
+        try:
+            url = socket.gethostbyaddr(target)
+        except:
+            pass
 
 
     return(open_ports)
