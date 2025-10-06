@@ -1,6 +1,9 @@
 import socket
 from common_ports import ports_and_services
 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(50)
+
 def get_open_ports(target, port_range, verbose = False):
     open_ports = []
     url = ''
@@ -25,4 +28,11 @@ def get_open_ports(target, port_range, verbose = False):
         if not s.connect_ex((ip_address, port)):
             open_ports.append(port)
 
-    return(open_ports)
+    if verbose == True:
+        results = results + f'Open ports for {url} ({ip_address})'
+        results = results + '\nPORT     SERVICE'
+        for item in open_ports:
+            results = results + f'\n{str(item):^3}      {ports_and_services[item]}'
+        return str(results)
+    else:
+        return(open_ports)
