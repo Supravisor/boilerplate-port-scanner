@@ -12,7 +12,10 @@ def get_open_ports(target, port_range, verbose = False):
         try:
             url = socket.gethostbyaddr(target)
         except:
-            pass
+            if not url:
+                return 'Error: Invalid hostname'
+            else:
+                return 'Error: Invalid IP address'
 
 
     return(open_ports)
