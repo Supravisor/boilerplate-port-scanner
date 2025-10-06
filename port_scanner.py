@@ -1,6 +1,9 @@
 import socket
 from common_ports import ports_and_services
 
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+s.settimeout(50)
+
 def get_open_ports(target, port_range, verbose = False):
     open_ports = []
     url = ''
